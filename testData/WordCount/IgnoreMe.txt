@@ -1,0 +1,1 @@
+This file should not be processed since its name does not end with a .tex extension.

@@ -1,0 +1,9 @@
+# Build artifacts.
+.idea/workspace.xml
+build
+doc/scaladoc
+.cache-main
+.cache-tests
+
+# Reference documentation
+doc/references/*.pdf

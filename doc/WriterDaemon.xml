@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+   "http://www.docbook.org/xml/4.5/docbookx.dtd" [
+
+<!ELEMENT xi:include (xi:fallback?) >
+<!ATTLIST xi:include
+    xmlns:xi   CDATA      #FIXED     "http://www.w3.org/2001/XInclude"
+    href       CDATA      #REQUIRED
+    parse      (xml|text) "xml"
+    encoding   CDATA      #IMPLIED >
+<!ELEMENT xi:fallback ANY>
+<!ATTLIST xi:fallback
+    xmlsn:xi   CDATA      #FIXED     "http://www.w3.org/2001/XInclude" >
+<!ENTITY % local.chapter.class "| xi:include">
+<!ENTITY % local.section.class "| xi:include">
+]>
+
+<!-- FILE        : WriterDaemon.xml
+     SUBJECT     : Master document for the WriterDaemon documentation set.
+     AUTHOR      : (C) Copyright 2014 by Peter C. Chapin <PChapin@vtc.vsc.edu>
+
+This is the documentation for the WriterDaemon program. -->
+
+<book status="draft">
+  <bookinfo>
+    <title>WriterDaemon</title>
+    <author>
+      <firstname>Peter</firstname>
+      <surname>Chapin</surname>
+      <othername role="mi">C.</othername>
+      <affiliation>
+        <orgname>Vermont Technical College</orgname>
+        <orgdiv>Computer Information Systems Department</orgdiv>
+      </affiliation>
+    </author>
+    <authorinitials>pcc</authorinitials>
+    <copyright>
+      <year>2015</year>
+      <holder>Peter C. Chapin</holder>
+    </copyright>
+    <legalnotice>
+      <para>Permission is granted to copy, distribute and/or modify this document under the
+        terms of the GNU Free Documentation License, Version 1.1 or any later version published
+        by the Free Software Foundation; with the Invariant Sections being LIST THEIR TITLES,
+        with the Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST. A copy
+        of the license is included in the section entitled "GNU Free Documentation License".
+      </para>
+    </legalnotice>
+    <!-- Do we really want to include this revision history now? -->
+    <revhistory>
+      <revision>
+        <revnumber>1.0</revnumber>
+        <date>2015-12-31</date>
+        <authorinitials>pcc</authorinitials>
+        <revremark>This is a work in progress. Release 1.0 is scheduled for the end of
+          2015.</revremark>
+      </revision>
+    </revhistory>
+  </bookinfo>
+  <preface id="Introduction">
+    <title>Introduction</title>
+
+    <para>WriterDaemon is a system for providing assistance to creative writers. It is an
+      analysis program for English prose. The problem of automatically extracting useful
+      information about a body of English text is extremely difficult. WriterDaemon addresses
+      this difficulty by having relatively low expectations. The first versions of the system
+      are expected to only provide very basic information about the text being analyzed.
+      However, it is my hope that in time WriterDaemon will mature enough to be useful in more
+      complex situations.</para>
+
+    <para>In the short term I hope to use WriterDaemon as a vehicle for teaching about Scala. In
+      that capacity the details of its analysis capabilities don't matter. Instead the
+      techniques used for implementing, testing, and documenting the system are more
+      important.</para>
+
+    <!-- Include disclaimer. -->
+
+  </preface>
+
+  <xi:include href="Build.xml"/>
+  <xi:include href="User.xml"/>
+  <xi:include href="Requirements.xml"/>
+  <xi:include href="Design.xml"/>
+
+  <!-- <bibliography> ... </bibliography> -->
+
+</book>

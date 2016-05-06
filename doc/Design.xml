@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd">
+  
+<chapter id="Design">
+  <title>WriterDaemon Design Documentation</title>
+
+  <para>This chapter contains the design documentation for WriterDaemon. This includes the
+    requirements of the system, its architecture, and its detailed design. This chapter is only
+    of interest to WriterDaemon contributors (or potential contributors). If you are a user of
+    WriterDaemon you can ignore this entire chapter.</para>
+
+</chapter>

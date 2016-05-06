@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : main.tex
+% AUTHOR  : (C) Copyright 2012 by Peter C. Chapin
+% SUBJECT : Master document for ...
+%
+% Send comments or bug reports to:
+%
+%       Peter C. Chapin
+%       Computer Information Systems
+%       Vermont Technical College
+%       Randolph Center, VT 05061
+%       PChapin@vtc.vsc.edu
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%+++++++++++++++++++++++++++++++++
+% Preamble and global declarations
+%+++++++++++++++++++++++++++++++++
+\documentclass{book}
+%\documentclass[12pt]{book}
+
+% Common packages. Uncomment as needed.
+%\usepackage{doublespace}
+%\usepackage{fullpage}
+%\usepackage{graphicx}
+\usepackage{hyperref}
+
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{1.75ex plus0.5ex minus0.5ex}
+
+\newcommand{\alien}[1]{\textit{#1}}
+\newcommand{\breakpoint}{%
+  \vspace{1.0em}\centerline{$\ast\hspace{2.0em}\ast\hspace{2.0em}\ast$}\vspace{1.0em}%
+}
+
+%++++++++++++++++++++
+% The document itself
+%++++++++++++++++++++
+\begin{document}
+
+%-----------------------
+% Title page information
+%-----------------------
+\title{Some Title}
+\author{Peter C. Chapin}
+\date{Generated: \today}
+\maketitle
+
+\input{Prologue}
+% The chapter counter is incremented just before it is used.
+\setcounter{chapter}{1}  \input{C01}    % Chapter 2
+\setcounter{chapter}{2}  \input{C02}    % Chapter 3
+\setcounter{chapter}{4}  \input{C03}    % Chapter 5
+\setcounter{chapter}{6}  \input{C04}    % Chapter 7
+\setcounter{chapter}{10} \input{C05}    % Chapter 11
+\setcounter{chapter}{12} \input{C06}    % Chapter 13
+\setcounter{chapter}{16} \input{C07}    % Chapter 17
+\setcounter{chapter}{18} \input{C08}    % Chapter 19
+\setcounter{chapter}{22} \input{C09}    % Chapter 23
+\setcounter{chapter}{28} \input{C10}    % Chapter 29
+\setcounter{chapter}{30} \input{C11}    % Chapter 31
+\input{Epilogue}
+
+\end{document}

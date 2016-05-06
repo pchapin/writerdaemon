@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd">
+  
+<chapter id="Requirements">
+  <title>WriterDaemon Requirements</title>
+
+  <para>This chapter describes the requirements of the WriterDaemon system.</para>
+
+  <section>
+    <title>Overview</title>
+
+    <para>WriterDaemon is a creative writer's assistant. It's primary purpose is to provide a
+      collection of useful analysis and document editing tools for English prose. WriterDaemon
+      can be used both as a standalone program and as a library that can be called from third
+      party applications. This allows WriterDaemon to be useful to both non-technical users and
+      to programmers wishing to build specialized functionality on top of WriterDaemon's basic
+      analysis capabilities.</para>
+
+    <para>WriterDaemon focuses on supporting creative writers, not business or technical
+      writers. This changes its emphasis in various ways. For example, WriterDaemon
+      provides:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>First class support for dialog. This includes acknowledging that text inside
+          dialog may be written with a different standard of spelling and grammar than the
+          surrounding narrative text.</para>
+      </listitem>
+
+      <listitem>
+        <para>First class support for constructed names and fabricated languages. This affects
+          both spelling and grammar checking.</para>
+      </listitem>
+
+      <listitem>
+        <para>Tunable grammar checking rules so that conventional violations of grammar can be
+          accepted in a way that is consistent with the author's intentions.</para>
+      </listitem>
+
+      <listitem>
+        <para>Style checking rules and metrics of interest to creative writers such as, for
+          example, the ratio of dialog to non-dialog text, the number of dialog fragments with
+          tags, sentence and paragraph length statistics, etc.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Fundamentally the WriterDaemon core is a library that provides access to the text
+      under study, along with a collection of useful tools for analyzing and manipulating that
+      text. This organization gives the WriterDaemon core maximum flexibility since it does not
+      commit itself to any particular user interface or application scenario.</para>
+
+    <para>In addition, the WriterDaemon project provides a command line user interface program
+      that allows users to access the full functionality of the underlying core library in a
+      non-interactive manner. The command line program can be used in scripting applications or
+      for processing batches of files. It can also be called, as-is, from certain text editor
+      applications in much the same way as a compiler for a programming language might be
+      used.</para>
+
+    <para>A long term goal of the WriterDaemon project is also to provide high level interfaces
+      to the core library that are user-friendly, most likely by way of plugins for popular
+      writing environments such as Emacs, jEdit, or Microsoft Word. In this way WriterDaemon
+      could potentially provide on-the-fly assistance to writers as they work, in a manner
+      similar to the way program development environments do for programmers. However, this mode
+      of operation is not specifically supported at this time and may be better solved by third
+      party projects external to WriterDaemon.</para>
+
+    <para>WriterDaemon is not intended to be a story organizational tool. Instead it operates at
+      a lower level, providing assistance with the mechanics of writing rather than with the
+      content or structure of a piece. Other tools exist for organizing such content;
+      WriterDaemon does not intend to compete with them.</para>
+  </section>
+
+  <section>
+    <title>Core Requirements</title>
+
+    <para>In this section we describe the core requirements that pertain to the entire
+      WriterDaemon system. The following requirements apply:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Core.LaTeX</emphasis>. WriterDaemon shall be able to analyze
+          and manipulate text in LaTeX format. Because of the complexity of fully handling
+          LaTeX, this requirement only pertains to the handling of "basic" LaTeX text. There is
+          no requirement at this time for handling other formats, although support for other
+          formats is a likely extension and should be considered in the design.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Core.English</emphasis>. WriterDaemon shall be able to
+          analyze and manipulate text in U.S. English. There is no requirement at this time for
+          handling other languages. However, WriterDaemon shall be non-destructive to unknown
+          languages since the use of fabricated languages in fiction is common.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Core.ScalaLib</emphasis>. WriterDaemon shall be provided as
+          a Scala library. This library shall be considered the primary deliverable of the
+          WriterDaemon project.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Core.ScalaDoc</emphasis>. WriterDaemon shall be documented
+          using the standard Scaladoc documentation system, in keeping with WriterDaemon's
+          status as a library. The documentation shall be complete and accurate.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">Core.CommandLine</emphasis>. The WriterDaemon project shall
+          also provide a command line tool that uses the WriterDaemon library and allows users
+          to access the functionality of WriterDaemon without necessarily writing custom
+          programs. The command line tool shall be complete in the sense that all functionality
+          of WriterDaemon shall be exposed. There is no requirement at this time for any other
+          user interface, although support for other interfaces is a likely extension.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Functional Requirements</title>
+
+    <para><emphasis>WriterDaemon's functional requirements are limited at this time due to the
+        immature nature of the system.</emphasis></para>
+
+  </section>
+
+  <section>
+    <title>Nonfunctional Requirements</title>
+
+    <para>In this section we describe the non-functional requirements of the WriterDaemon
+      system. The following requirements apply:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">NonFun.ImplLang</emphasis>. WriterDaemon shall be
+          implemented in Scala using the latest version of Scala available. This includes both
+          the library and the command line tool.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">NonFun.Platform</emphasis>. WriterDaemon shall run on any
+          platform where Scala runs. No operating system dependencies shall be used other than
+          those available through the Scala library and Java Virtual Machine.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">NonFun.OpenSource</emphasis>. WriterDaemon shall be open
+          source using some as yet to be determined open source license. Any third party
+          libraries used by WriterDaemon shall have licenses that allow them to be freely
+          distributed.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">NonFun.Performance</emphasis>. WriterDaemon shall be able to
+          process novel-sized documents (100,000 words) spread over multiple files (dozens) in a
+          reasonable amount of time. The precise meaning of "reasonable" is left open because it
+          is understood that it will depend on the operation requested. In general WriterDaemon
+          should provide results while the author waits.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">NonFun.Host</emphasis>. WriterDaemon shall run on any modern
+          desktop or laptop host with typical memory, processor, and disk space resources.
+          WriterDaemon shall not consume resources excessively. There is no requirement at this
+          time for WriterDaemon to run on a mobile device, although support for doing so is a
+          possible future extension.</para>
+      </listitem>
+
+      <listitem>
+        <para><emphasis role="bold">NonFun.Privacy</emphasis>. WriterDaemon shall not publicly
+          expose any of the text it analyzes without explicit permission from the user. This
+          includes (but is not limited to) transmitting text over the network, saving text in
+          public folders, or saving text in temporary folders. It is understood that
+          WriterDaemon may be manipulating text with significant intellectual property value and
+          it shall act accordingly.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+</chapter>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.docbook.org/xml/4.5/docbookx.dtd">
+  
+<chapter id="Build">
+  <title>Building WriterDaemon</title>
+
+  <para>This chapter describes how to build WriterDaemon and its associated documentation. If
+    you are using a binary distribution of WriterDaemon you can skip this section. The tools
+    with specific version numbers shown below are the official tools used by the WriterDaemon
+    contributors. Other tools (or other versions of the same tools) may also work. Obviously the
+    greater the differences between the tools you attempt to use and those listed below the more
+    trouble you are likely to encounter during the build process.</para>
+
+  <variablelist>
+    <title>Build Tools</title>
+
+    <varlistentry>
+      <term>IntelliJ IDEA</term>
+      <listitem>
+        <para>We use IntelliJ IDEA v15.0.4 with the Scala plugin as our integrated development
+          environment.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>Scala Compiler</term>
+      <listitem>
+        <para>We use Scala v2.11.7. The Scala compiler is executed indirectly via IntelliJ IDEA
+          Currently no official method of building WriterDaemon outside the IDE is
+          provided.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>DocBook</term>
+      <listitem>
+        <para>The documentation is written in DocBook. This is an XML format and so is readable
+          in an ordinary text editor. However, if you want to build nicely formatted
+          documentation you will need a tool chain for processing DocBook documents. Several
+          such tool chains exist.</para>
+      </listitem>
+    </varlistentry>
+
+  </variablelist>
+
+  <para>See the <filename>README.md</filename> file in the root of the project folder for
+    specific details about setting up IntelliJ IDEA and building the WriterDaemon system.</para>
+
+  <para><emphasis>Say something about testing!</emphasis></para>
+
+</chapter>
