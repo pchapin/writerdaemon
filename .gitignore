@@ -1,5 +1,6 @@
 # Build artifacts.
 .idea/workspace.xml
+bin
 build
 doc/scaladoc
 .cache-main
