@@ -2,6 +2,7 @@
 .idea/workspace.xml
 bin
 build
+/target
 doc/scaladoc
 .cache-main
 .cache-tests
