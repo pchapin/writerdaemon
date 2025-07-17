@@ -1,4 +1,4 @@
-package org.pchapin.writerdaemon
+package org.kelseymountain.writerdaemon
 
 /**
  * Class representing a single paragraph of text. Instances of this class hide the manner in

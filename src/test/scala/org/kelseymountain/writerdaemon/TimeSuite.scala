@@ -1,4 +1,4 @@
-package org.pchapin.writerdaemon
+package org.kelseymountain.writerdaemon
 
 class TimeSuite extends UnitSuite {
 

@@ -1,4 +1,4 @@
-package org.pchapin.writerdaemon
+package org.kelseymountain.writerdaemon
 
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers

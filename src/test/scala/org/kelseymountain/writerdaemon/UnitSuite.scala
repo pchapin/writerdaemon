@@ -1,4 +1,4 @@
-package org.pchapin.writerdaemon
+package org.kelseymountain.writerdaemon
 
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers

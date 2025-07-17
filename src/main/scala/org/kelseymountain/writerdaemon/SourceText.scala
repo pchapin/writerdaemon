@@ -1,4 +1,4 @@
-package org.pchapin.writerdaemon
+package org.kelseymountain.writerdaemon
 
 /**
  * Class representing an arbitrary unit of text, such as a single document or chapter. The

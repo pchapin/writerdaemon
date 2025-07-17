@@ -1,4 +1,4 @@
-package org.pchapin.writerdaemon
+package org.kelseymountain.writerdaemon
 
 /**
  * Class representing a single sentence. Instances of this class hide the manner in which
