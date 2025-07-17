@@ -1,6 +1,6 @@
 package org.kelseymountain.writerdaemon
 
-trait Date {
+trait Date:
 
   // Access methods may be non-trivial in some implementations.
   def day  : Int
@@ -13,12 +13,12 @@ trait Date {
 
   // Operations defined in terms of the abstract methods above.
   def isLeap: Boolean = Date.isLeapYear(year)
-}
+end Date
 
-object Date {
+object Date:
   class InvalidDateException(message: String) extends Exception(message)
 
-  // If you change these values you should review and update the documentation as needed. This
+  // If you change these values, you should review and update the documentation as needed. This
   // trait only supports dates with years in the range yearMin <= year < yearMax.
   private val yearMin = 1900
   private val yearMax = 2100
@@ -33,22 +33,22 @@ object Date {
    * the range 1900 to 2099 (inclusive) are supported; dates outside that range are considered
    * invalid.
    */
-  def valid(year: Int, month: Int, day: Int): Boolean = {
+  def valid(year: Int, month: Int, day: Int): Boolean =
 
     // Return true if the day is out of bounds for the given (year, month).
-    def outOfBoundsDay(year: Int, month: Int, day: Int): Boolean = {
+    def outOfBoundsDay(year: Int, month: Int, day: Int): Boolean =
       val monthLengths = Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
       val daysInMonth =
         if (month != 2) monthLengths(month - 1) else if (isLeapYear(year)) 29 else 28
 
       day < 1 || day > daysInMonth
-    }
+    end outOfBoundsDay
 
     if (year < yearMin || year >= yearMax) false
     else if (month < 1 || month > 12) false
     else if (outOfBoundsDay(year, month, day)) false
     else true
-  }
+  end valid
 
 
   /**
@@ -57,11 +57,11 @@ object Date {
    *
    * @return True if the given year is a leap year and false otherwise.
    */
-  private def isLeapYear(year: Int) = {
+  private def isLeapYear(year: Int) =
     if (year % 4 != 0) false
     else if (year % 400 == 0) true
     else if (year % 100 == 0) false
     else true
-  }
+  end isLeapYear
 
-}
+end Date

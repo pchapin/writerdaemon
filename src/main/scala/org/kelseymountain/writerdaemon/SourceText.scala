@@ -10,7 +10,7 @@ package org.kelseymountain.writerdaemon
  * @param paragraphs A sequence of paragraph objects that represents the content of this source
  * text.
  */
-class SourceText(private val paragraphs: Seq[Paragraph]) extends Iterable[Paragraph] {
+class SourceText(private val paragraphs: Seq[Paragraph]) extends Iterable[Paragraph]:
 
   /**
    * @return An iterator over the paragraphs of a source file.
@@ -28,4 +28,5 @@ class SourceText(private val paragraphs: Seq[Paragraph]) extends Iterable[Paragr
    * @return The number of paragraphs in the source text.
    */
   override def size: Int = paragraphs.size
-}
+
+end SourceText

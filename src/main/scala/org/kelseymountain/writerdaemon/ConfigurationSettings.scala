@@ -11,7 +11,7 @@ import java.io._
  * function. The validation function is used to both check a candidate setting and to normalize
  * the value of the setting into whatever form the application finds convenient.
  */
-class ConfigurationSettings(private val configurableItems: Map[String, String => String]) {
+class ConfigurationSettings(private val configurableItems: Map[String, String => String]):
   import ConfigurationSettings._
 
   /** Contains a map of (name, value) pairs. */
@@ -25,11 +25,10 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
    * @throws BadNameException if a name is encountered that is not configurable.
    * @throws BadValidationException if a value does not pass validation.
    */
-  def setDefaults(defaultValues: Map[String, String]): Unit = {
-    for ((name, value) <- defaultValues) {
+  def setDefaults(defaultValues: Map[String, String]): Unit =
+    for ((name, value) <- defaultValues)
       put(name, value)
-    }
-  }
+  end setDefaults
 
 
   /**
@@ -42,7 +41,7 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
    * white space characters. For example, an input string such as "Hello! # This is a comment"
    * is returned as "Hello! ".
    */
-  private def killComments(line: String): String = {
+  private def killComments(line: String): String =
     object States extends Enumeration {
       val Normal, Quote = Value
     }
@@ -52,16 +51,14 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
     var index = -1
 
     for (currentIndex <- 0 until line.length) {
-      line(currentIndex) match {
+      line(currentIndex) match
         case '\"' => currentState = if (currentState == Normal) Quote else Normal
         case _ =>
           if (currentState == Normal && line(currentIndex) == '#')
             index = if (index == -1) currentIndex else index
-      }
     }
     if (index == -1) line else line.substring(0, index)
-  }
-
+  end killComments
 
   /**
    * Read a configuration file and use its contents to populate the settings map. The file
@@ -82,18 +79,18 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
    * @throws BadNameException if a name is encountered that is not configurable.
    * @throws BadValidationException if any of the file members fail to pass validation.
    */
-  def readConfigurationFile(fileName: String): Unit = {
+  def readConfigurationFile(fileName: String): Unit =
     // TODO: This method does not allow the value to contain an '=' character.
     // TODO: If a name is found that is not among the set of allowed configurable items, it is silently ignored.
 
     var inputFile: BufferedReader = null
-    try {
+    try
       inputFile = new BufferedReader(new FileReader(fileName))
       var line: String = inputFile.readLine()
-      while (line != null) {
+      while (line != null)
         line = killComments(line)
         line = line.trim
-        if (line.nonEmpty) {
+        if (line.nonEmpty)
           val fields = line.split("""\s*=\s*""")
 
           // Do some sanity checking on the line. Ignore it if it looks bad.
@@ -101,15 +98,12 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
               fields(0).length >= 1       &&
               fields(1).length >= 2       &&
               fields(1).charAt(0) == '\"' &&
-              fields(1).charAt(fields(1).length - 1) == '\"') {
+              fields(1).charAt(fields(1).length - 1) == '\"')
 
             fields(1) = fields(1).substring(1, fields(1).length - 1)
             put(fields(0), fields(1))
-          }
-        }
+
         line = inputFile.readLine()
-      }
-    }
     catch {
       // Explicitly ignore the exception if the configuration file can't be opened.
       case e: FileNotFoundException => { }
@@ -117,7 +111,7 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
     finally {
       if (inputFile != null) inputFile.close()
     }
-  }
+  end readConfigurationFile
 
 
   /**
@@ -128,14 +122,14 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
    *
    * @throws BadNameException if a non-configurable name is used.
    */
-  def apply(name: String): Option[String] = {
+  def apply(name: String): Option[String] =
     if (!configurableItems.contains(name))
       throw new BadNameException("Attempt to look up unknown configuration item: " + name)
     if (settings.contains(name))
       Some(settings(name))
     else
       None
-  }
+  end apply
 
 
   /**
@@ -149,14 +143,12 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
    * @throws BadNameException if the name does not specify a configurable item.
    * @throws BadValidationException if the value does not pass validation.
    */
-  def put(name: String, value: String): Unit = {
+  def put(name: String, value: String): Unit =
     if (configurableItems.contains(name))
       settings += ( name -> configurableItems(name)(value) )
     else
       throw new BadNameException("Unknown configuration item: " + name)
-  }
-
-}
+  end put
 
 
 /**
@@ -167,7 +159,7 @@ class ConfigurationSettings(private val configurableItems: Map[String, String =>
  * programmer uses a custom validation method it should conform to the same semantics as
  * described here.
  */
-object ConfigurationSettings {
+object ConfigurationSettings:
 
   /** Exception thrown when an unrecognized configurable name is encountered. */
   class BadNameException(message: String) extends Exception(message)
@@ -182,16 +174,18 @@ object ConfigurationSettings {
    * @param raw The string to validate.
    * @throws BadValidationException if the raw string is not in the form described above.
    */
-  def basicBooleanValidator(raw: String): String = {
+  def basicBooleanValidator(raw: String): String =
     val upperRaw = raw.toUpperCase
     if      (upperRaw == "TRUE"  || upperRaw == "T") "true"
     else if (upperRaw == "FALSE" || upperRaw == "F") "false"
     else
       throw new BadValidationException("Invalid boolean string")
-  }
+  end basicBooleanValidator
+
 
   // TODO: Do some real validation here.
   def basicIntegerValidator(raw: String): String = raw
+
 
   /*
    * Validates simple strings. Every string is considered valid.
@@ -204,6 +198,8 @@ object ConfigurationSettings {
       raw
     else
       throw new BadValidationException("Invalid string (null reference)")
+  end basicStringValidator
+
 
   /**
    * Verifies that the given string looks like a valid path name on the host system. This
@@ -212,10 +208,9 @@ object ConfigurationSettings {
    * non-existent file. More powerful validators can be defined that do check these features if
    * desired.
    */
-  def basicPathValidator(raw: String): String = {
+  def basicPathValidator(raw: String): String =
     // TODO: Be sure each character is a valid file name character.
     raw.map( ch =>
       if (ch == '/' || ch == '\\') File.separatorChar else ch
     )
-  }
-}
+  end basicPathValidator

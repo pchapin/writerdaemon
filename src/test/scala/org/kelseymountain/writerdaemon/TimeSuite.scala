@@ -1,6 +1,6 @@
 package org.kelseymountain.writerdaemon
 
-class TimeSuite extends UnitSuite {
+class TimeSuite extends UnitSuite:
 
   test("Time constructor") {
 
@@ -26,14 +26,14 @@ class TimeSuite extends UnitSuite {
     assert(t2.hours == 23 && t2.minutes == 59 && t2.seconds == 59)
 
     // Try various invalid times.
-    for (testArguments <- invalidTests) {
+    for (testArguments <- invalidTests)
       val thrownException = intercept[Time.InvalidTimeException] {
         val invalidTime =
           new Time(testArguments.badHours, testArguments.badMinutes, testArguments.badSeconds)
       }
       thrownException.getMessage should equal (testArguments.message)
-    }
+    end for
 
   }
 
-}
+end TimeSuite

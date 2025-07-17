@@ -1,6 +1,6 @@
 package org.kelseymountain.writerdaemon
 
-class ConfigurationSuite extends UnitSuite {
+class ConfigurationSuite extends UnitSuite:
 
   test("Basic configuration") {
     // TODO: Enhance the ConfigurationSettings test.
@@ -27,4 +27,4 @@ class ConfigurationSuite extends UnitSuite {
     assert(currentSettings("IntegerItem").contains("1234"))
   }
 
-}
+end ConfigurationSuite

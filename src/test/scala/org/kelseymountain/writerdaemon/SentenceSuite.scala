@@ -2,7 +2,7 @@ package org.kelseymountain.writerdaemon
 
 import scala.collection.immutable.ArraySeq
 
-class SentenceSuite extends UnitSuite {
+class SentenceSuite extends UnitSuite:
 
   test("Sentence Constructor") {
 
@@ -24,11 +24,12 @@ class SentenceSuite extends UnitSuite {
     // Try some invalid words to see if they are rejected.
     val invalidWords =
       Array("", "Hello$", "$Hello", "Hell$o", "Hello World", " Hello", "Hello ", "$")
-    for (invalidWord <- invalidWords) {
+    for (invalidWord <- invalidWords)
       val thrownException = intercept[Sentence.InvalidSentenceException] {
         val s = new Sentence(ArraySeq.unsafeWrapArray(Array(invalidWord)))
       }
       thrownException.getMessage should equal  ("Sentence with invalid word: " + invalidWord)
-    }
+    end for
   }
-}
+
+end SentenceSuite

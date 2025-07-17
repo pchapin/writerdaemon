@@ -8,7 +8,7 @@ package org.kelseymountain.writerdaemon
  * Each punctuation mark in the sentence, including the terminating mark, should be included as
  * separate elements.
  */
-class Sentence(private val elements: Seq[String]) extends collection.Iterable[String] {
+class Sentence(private val elements: Seq[String]) extends collection.Iterable[String]:
   import Sentence._
 
   // Is this check worth making?
@@ -17,10 +17,9 @@ class Sentence(private val elements: Seq[String]) extends collection.Iterable[St
     throw new InvalidSentenceException("Zero length sentence")
 
   // Make sure all the sentence elements are normal words or single valid punctuation characters.
-  for (element <- elements) {
+  for (element <- elements)
     if (!Word.isPunctuation(element) && !Word.isWord(element))
       throw new InvalidSentenceException("Sentence with invalid word: " + element)
-  }
 
   /**
    * @return An iterator over the elements of a sentence (words and punctuation).
@@ -55,13 +54,14 @@ class Sentence(private val elements: Seq[String]) extends collection.Iterable[St
    * @return The total number of sentence elements (words and punctuation).
    */
   override def size: Int = elements.size
-}
+end Sentence
 
 
-object Sentence {
+object Sentence:
 
   /**
    * Exception thrown when an invalid sequence of strings is used as a sentence.
    */
   class InvalidSentenceException(message: String) extends Exception(message)
-}
+
+end Sentence

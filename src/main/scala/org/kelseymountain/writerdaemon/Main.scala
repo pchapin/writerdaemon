@@ -2,9 +2,9 @@ package org.kelseymountain.writerdaemon
 
 import java.io.{FilenameFilter, File}
 
-object Main {
+object Main:
 
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit =
     val configurableItems = Map("AbbreviationFile" -> ConfigurationSettings.basicStringValidator _)
     val defaultConfiguration = Map("AbbreviationFile" -> "wd-abbreviations.txt")
     val settings = new ConfigurationSettings(configurableItems)
@@ -31,6 +31,6 @@ object Main {
     }).sum
 
     println("Total word count = " + totalCount)
-  }
+  end main
 
-}
+end Main

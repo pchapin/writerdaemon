@@ -7,7 +7,7 @@ import util.matching.Regex
  * words themselves are represented as strings and don't need a separate class. If that changes
  * in the future, a companion class to this object could be created.
  */
-object Word {
+object Word:
 
   // Regular expression that matches ordinary words.
   private val wordMatcher = new Regex("^[A-Za-z0-9]+$")
@@ -28,5 +28,5 @@ object Word {
    * @return True if the given element is a punctuation mark; false otherwise.
    */
   def isPunctuation(element: String): Boolean = validPunctuation.contains(element)
-  
-}
+
+end Word

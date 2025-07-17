@@ -6,7 +6,7 @@ package org.kelseymountain.writerdaemon
  *
  * @param sentences A sequence of sentences that represents the content of this paragraph.
  */
-class Paragraph(private val sentences: Seq[Sentence]) extends collection.Iterable[Sentence] {
+class Paragraph(private val sentences: Seq[Sentence]) extends collection.Iterable[Sentence]:
 
   /**
    * @return An iterator over the sentences of the paragraph.
@@ -24,4 +24,4 @@ class Paragraph(private val sentences: Seq[Sentence]) extends collection.Iterabl
    * @return The number of sentences in the paragraph.
    */
   override def size: Int = sentences.size
-}
+end Paragraph
