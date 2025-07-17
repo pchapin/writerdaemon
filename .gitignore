@@ -1,11 +1,11 @@
 # Build artifacts.
-.idea/workspace.xml
-bin
-build
-/target
+target
+project/project
 doc/scaladoc
-.cache-main
-.cache-tests
+.bsp
+
+# IntelliJ artifacts.
+.idea
 
 # Reference documentation
 doc/references/*.pdf
